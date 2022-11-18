@@ -8,8 +8,8 @@ type Props = {
   value: string;
   isReadOnly: boolean;
   isSensitive: boolean;
-  valueChangeHandler: (e: ChangeEvent<HTMLInputElement>, id: number) => void;
-  sensitiveChangeHandler: (e: ChangeEvent<HTMLInputElement>, id: number) => void;
+  valueChangeHandler?: (e: ChangeEvent<HTMLInputElement>, id: number) => void;
+  sensitiveChangeHandler?: (e: ChangeEvent<HTMLInputElement>, id: number) => void;
 };
 
 export const Secret: FC<Props> = ({
@@ -28,9 +28,9 @@ export const Secret: FC<Props> = ({
         readOnly={isReadOnly}
         type={isSensitive ? "password" : "text"}
         value={value}
-        onChange={(e) => {
-          valueChangeHandler(e, id);
-        }}
+        // onChange={(e) => {
+        //   valueChangeHandler(e, id);
+        // }}
       />
       <label htmlFor={`isReadOnly_${id}`}>
         <input id={`isReadOnly_${id}`} type={"checkbox"} checked={isReadOnly} />
@@ -40,9 +40,9 @@ export const Secret: FC<Props> = ({
       <label htmlFor={`isSensitive_${id}`}>
         <input
           id={`isSensitive_${id}`}
-          onChange={(e) => {
-            sensitiveChangeHandler(e, id);
-          }}
+          // onChange={(e) => {
+          //   sensitiveChangeHandler(e, id);
+          // }}
           type={"checkbox"}
           checked={isSensitive}
         />

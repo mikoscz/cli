@@ -2,6 +2,7 @@ import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { Button } from "./components/Button";
 import { Input } from "./components/Input/Input";
 import { Secret } from "./components/Secret";
+import { SecretList } from "./components/SecretList";
 import styles from "./styles/App.module.sass";
 import Logo from "./assets/logo.svg"
 
@@ -59,22 +60,7 @@ function App() {
           Add
         </Button>
       </div>
-      <div>
-        {secrets.map(({ id, key, value, isReadOnly, isSensitive }) => {
-          return (
-            <Secret
-              key={id}
-              id={id}
-              keyValue={key}
-              value={value}
-              isReadOnly={isReadOnly}
-              isSensitive={isSensitive}
-              valueChangeHandler={valueChangeHandler}
-              sensitiveChangeHandler={sensitiveChangeHandler}
-            />
-          );
-        })}
-      </div>
+      <SecretList secrets={secrets}/>
     </div>
   );
 }
