@@ -9,30 +9,21 @@ type Props = {
   sensitiveChangeHandler?: (e: ChangeEvent<HTMLInputElement>, id: number) => void;
 };
 
-export const Secret: FC<Props> = ({
-  secret,
-  valueChangeHandler,
-  sensitiveChangeHandler,
-}) => {
-
+export const Secret: FC<Props> = ({ secret, valueChangeHandler, sensitiveChangeHandler }) => {
   const [secretData, setSecretData] = useState(secret);
 
-  const {key, value, id, isReadOnly, isSensitive} = secretData;
+  const { key, value, id, isReadOnly, isSensitive } = secretData;
 
   const changeTextField = (event: ChangeEvent<HTMLInputElement>, keyName: string) => {
     setSecretData({
       ...secretData,
-      [keyName]: event.target.value
-    })
-  }
+      [keyName]: event.target.value,
+    });
+  };
 
   return (
     <div className={styles.main}>
-      <Input
-        readOnly={isReadOnly}
-        value={key}
-        onChange={(e) => changeTextField(e, "key")}
-      />
+      <Input readOnly={isReadOnly} value={key} onChange={(e) => changeTextField(e, "key")} />
       <Input
         readOnly={isReadOnly}
         type={isSensitive ? "password" : "text"}

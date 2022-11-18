@@ -10,23 +10,30 @@ export interface ISecret {
 }
 
 export interface SecretListProps {
-  secrets: ISecret[]
+  secrets: ISecret[];
 }
 
-export const SecretList = ({secrets}: SecretListProps) => {
+export const SecretList = ({ secrets }: SecretListProps) => {
   return (
-    <div className={style.wrapper}>
-      {secrets.map((secret) => {
-        return (
-          <Secret
-            key={secret.id}
-            secret={secret}
+    <>
+      <div className={style.headers}>
+        <p>Key</p>
+        <p>Value</p>
+        <p>Read-only</p>
+      </div>
+      <div className={style.wrapper}>
+        {secrets.map((secret) => {
+          return (
+            <Secret
+              key={secret.id}
+              secret={secret}
 
-            // valueChangeHandler={valueChangeHandler}
-            // sensitiveChangeHandler={sensitiveChangeHandler}
-          />
-        );
-      })}
-    </div>
-  )
+              // valueChangeHandler={valueChangeHandler}
+              // sensitiveChangeHandler={sensitiveChangeHandler}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
 };
