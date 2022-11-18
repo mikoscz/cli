@@ -3,6 +3,8 @@ import { Button } from "./components/Button";
 import { Input } from "./components/Input/Input";
 import { Secret } from "./components/Secret";
 import styles from "./styles/App.module.sass";
+import Logo from "./assets/logo.svg"
+
 
 const DEFAULT_DATA = [
   { id: 1, isSensitive: true, key: "SOME_KEY", value: "SOME_VALUE", isReadOnly: false },
@@ -41,6 +43,10 @@ function App() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.logoWraper}>
+      <img src={Logo} className={styles.logo}/>
+      <h1 className={styles.logoText}>Selleo/Dashboard</h1>
+      </div>
       <div className={styles.header}>
         <div className={styles.repo}>
           <span>selleo/dashboard</span> &gt; dev
@@ -52,9 +58,6 @@ function App() {
         >
           Add
         </Button>
-        <Input value="" onChange={()=> {
-
-        }}/>
       </div>
       <div>
         {secrets.map(({ id, key, value, isReadOnly, isSensitive }) => {
