@@ -1,4 +1,4 @@
-import { PropsWithChildren, FC, ChangeEvent } from "react";
+import { PropsWithChildren, FC, ChangeEvent, useState } from "react";
 import { Input } from "../Input/Input";
 import { ISecret } from "../SecretList";
 import styles from "./Secret.module.sass";
@@ -15,16 +15,30 @@ export const Secret: FC<Props> = ({
   sensitiveChangeHandler,
 }) => {
 
-  const {key, value, id, isReadOnly, isSensitive} = secret;
+  const [secretData, setSecretData] = useState(secret);
 
-  // const changeKey = (event: ChangeEvent<HTMLInputElement>) => {
+  const {key, value, id, isReadOnly, isSensitive} = secretData;
 
-  // }
+  const changeTextField = (event: ChangeEvent<HTMLInputElement>, keyName: string) => {
+    setSecretData({
+      ...secretData,
+      [keyName]: event.target.value
+    })
+  }
 
   return (
     <div className={styles.main}>
-      <Input readOnly={true} value={key} />
-      <Input readOnly={isReadOnly} type={isSensitive ? "password" : "text"} value={value} />
+      <Input
+        readOnly={isReadOnly}
+        value={key}
+        onChange={(e) => changeTextField(e, "key")}
+      />
+      <Input
+        readOnly={isReadOnly}
+        type={isSensitive ? "password" : "text"}
+        value={value}
+        onChange={(e) => changeTextField(e, "value")}
+      />
       <label htmlFor={`isReadOnly_${id}`}>
         <input id={`isReadOnly_${id}`} type={"checkbox"} readOnly checked={isReadOnly} />
         Read only?

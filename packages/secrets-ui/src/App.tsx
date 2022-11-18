@@ -7,7 +7,7 @@ import styles from "./styles/App.module.sass";
 import Logo from "./assets/logo.svg"
 
 
-const DEFAULT_DATA = [
+let DEFAULT_DATA = [
   { id: "1", isSensitive: true, key: "SOME_KEY", value: "SOME_VALUE", isReadOnly: false },
   { id: "2", isSensitive: false, key: "SOME_KEY_1", value: "1298371-aldkhasdf-asklfjh", isReadOnly: false },
   { id: "3", isSensitive: true, key: "SOME_KEY_2", value: "Hello there", isReadOnly: true },
