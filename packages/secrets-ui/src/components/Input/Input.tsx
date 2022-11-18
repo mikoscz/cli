@@ -1,26 +1,18 @@
-import { ChangeEvent } from "react";
+import { ChangeEventHandler } from "react";
 
 import style from "./Input.module.sass";
 
 export interface InputProps {
   value: string;
-  onChange?: (newValue: string) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   type?: "text" | "password";
+  readOnly?: boolean;
 }
 
-export const Input = ({ value, type = "text", onChange }: InputProps) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event.target.value);
-  };
-
+export const Input = ({ value, type = "text", onChange, readOnly = false }: InputProps) => {
   return (
     <div className={style.wrapper}>
-      <input
-      type={type}
-      value={value}
-      onChange={handleChange}
-      className={style.input}
-      />
+      <input type={type} readOnly={readOnly} value={value} onChange={onChange} className={style.input} />
     </div>
   );
 };
