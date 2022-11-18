@@ -1,8 +1,8 @@
 import { Secret } from "../Secret/Secret";
 import style from "./SecretList.module.sass";
 
-export interface Secret {
-  id: number;
+export interface ISecret {
+  id: string;
   key: string;
   value: string;
   isReadOnly: boolean;
@@ -10,21 +10,18 @@ export interface Secret {
 }
 
 export interface SecretListProps {
-  secrets: Secret[]
+  secrets: ISecret[]
 }
 
 export const SecretList = ({secrets}: SecretListProps) => {
   return (
     <div className={style.wrapper}>
-      {secrets.map(({ id, key, value, isReadOnly, isSensitive }) => {
+      {secrets.map((secret) => {
         return (
           <Secret
-            key={id}
-            id={id}
-            keyValue={key}
-            value={value}
-            isReadOnly={isReadOnly}
-            isSensitive={isSensitive}
+            key={secret.id}
+            secret={secret}
+
             // valueChangeHandler={valueChangeHandler}
             // sensitiveChangeHandler={sensitiveChangeHandler}
           />
