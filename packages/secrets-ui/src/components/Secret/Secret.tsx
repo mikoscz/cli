@@ -24,29 +24,10 @@ export const Secret: FC<Props> = ({
   return (
     <div className={styles.main}>
       <Input readOnly={true} value={keyValue} />
-      <Input
-        readOnly={isReadOnly}
-        type={isSensitive ? "password" : "text"}
-        value={value}
-        // onChange={(e) => {
-        //   valueChangeHandler(e, id);
-        // }}
-      />
+      <Input readOnly={isReadOnly} type={isSensitive ? "password" : "text"} value={value} />
       <label htmlFor={`isReadOnly_${id}`}>
-        <input id={`isReadOnly_${id}`} type={"checkbox"} checked={isReadOnly} />
+        <input id={`isReadOnly_${id}`} type={"checkbox"} readOnly checked={isReadOnly} />
         Read only?
-      </label>
-
-      <label htmlFor={`isSensitive_${id}`}>
-        <input
-          id={`isSensitive_${id}`}
-          // onChange={(e) => {
-          //   sensitiveChangeHandler(e, id);
-          // }}
-          type={"checkbox"}
-          checked={isSensitive}
-        />
-        Is Sensitive?
       </label>
     </div>
   );
