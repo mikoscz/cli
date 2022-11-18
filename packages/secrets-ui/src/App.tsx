@@ -25,6 +25,9 @@ function App() {
         >
           Add
         </Button>
+        <Input value="" onChange={()=> {
+
+        }}/>
       </div>
       <div>
         {secrets.map(({ key, value, isReadOnly, isSensitive }) => {

@@ -15,7 +15,12 @@ export const Input = ({ value, type = "text", onChange }: InputProps) => {
 
   return (
     <div className={style.wrapper}>
-      <input type={type} value={value} onChange={handleChange} />
+      <input
+      type={type}
+      value={value}
+      onChange={handleChange}
+      className={style.input}
+      />
     </div>
   );
 };
