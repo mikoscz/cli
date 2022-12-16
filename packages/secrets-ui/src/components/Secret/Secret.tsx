@@ -21,14 +21,27 @@ export const Secret: FC<Props> = ({ secret, valueChangeHandler, sensitiveChangeH
     });
   };
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    alert("Copied to clipboard")
+  }
+
   return (
     <div className={styles.main}>
-      <Input readOnly={isReadOnly} value={key} onChange={(e) => changeTextField(e, "key")} />
+      <Input
+        readOnly={isReadOnly}
+        value={key}
+        onChange={(e) => changeTextField(e, "key")}
+        copyable
+        onCopy={handleCopy}
+      />
       <Input
         readOnly={isReadOnly}
         type={isSensitive ? "password" : "text"}
         value={value}
         onChange={(e) => changeTextField(e, "value")}
+        copyable
+        onCopy={handleCopy}
       />
       <label htmlFor={`isReadOnly_${id}`}>
         <input id={`isReadOnly_${id}`} type={"checkbox"} readOnly checked={isReadOnly} />
